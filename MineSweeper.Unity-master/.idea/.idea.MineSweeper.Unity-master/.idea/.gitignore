@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/contentModel.xml
+/projectSettingsUpdater.xml
+/.idea.MineSweeper.Unity-master.iml
+# Datasource local storage ignored files
+/../../../../../../../../../../../:\Users\sunlu\Documents\GitRepos\Example Projects\MineSweeper.Unity-master\MineSweeper.Unity-master\.idea\.idea.MineSweeper.Unity-master\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
