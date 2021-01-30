@@ -119,3 +119,104 @@ System memory in use after: 57.3 MB.
 Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1561.
 Total: 1.162900 ms (FindLiveObjects: 0.106600 ms CreateObjectMapping: 0.030200 ms MarkObjects: 1.013300 ms  DeleteObjects: 0.012300 ms)
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000579 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.19 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.644 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.20 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1124 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 57.6 MB.
+System memory in use after: 57.7 MB.
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1575.
+Total: 1.353500 ms (FindLiveObjects: 0.119200 ms CreateObjectMapping: 0.035100 ms MarkObjects: 1.183900 ms  DeleteObjects: 0.014600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000592 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.19 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.669 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.17 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1124 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 57.6 MB.
+System memory in use after: 57.7 MB.
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1577.
+Total: 1.521900 ms (FindLiveObjects: 0.171400 ms CreateObjectMapping: 0.042400 ms MarkObjects: 1.297300 ms  DeleteObjects: 0.010100 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 3600.454376 seconds.
+  path: Assets/TwitchChatConnect/Example
+  artifactKey: Guid(c5f8b4b67b2c30b42a130433ea30915d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TwitchChatConnect/Example using Guid(c5f8b4b67b2c30b42a130433ea30915d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4befbce3964d79f5f94355800c95fca') in 0.010410 seconds
+  Import took 0.012145 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.034853 seconds.
+  path: Assets/TwitchChatConnect/Example/TwitchConnectData.asset
+  artifactKey: Guid(e33434cae905fef48a0a22ae7fd9ca3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TwitchChatConnect/Example/TwitchConnectData.asset using Guid(e33434cae905fef48a0a22ae7fd9ca3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9fc9869ad27e22c45abad99ecc5169ae') in 0.021916 seconds
+  Import took 0.023962 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 256.650861 seconds.
+  path: Assets/TwitchChatConnect/Example/ShowChatMessages/ChatMessageText.prefab
+  artifactKey: Guid(5a8042156040fb14ab8f53c781ffca37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TwitchChatConnect/Example/ShowChatMessages/ChatMessageText.prefab using Guid(5a8042156040fb14ab8f53c781ffca37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c6a99b7cd0146e954ebf97e9ac573aaf') in 0.029174 seconds
+  Import took 0.031815 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.382109 seconds.
+  path: Assets/TwitchChatConnect/Example/ShowChatMessages/SampleScene.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TwitchChatConnect/Example/ShowChatMessages/SampleScene.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f42d0df9a06374785bc9f1f0cb70f5f3') in 0.007220 seconds
+  Import took 0.009571 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000554 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.18 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.621 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.18 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1124 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 57.8 MB.
+System memory in use after: 57.9 MB.
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1581.
+Total: 1.194800 ms (FindLiveObjects: 0.106300 ms CreateObjectMapping: 0.030400 ms MarkObjects: 1.046300 ms  DeleteObjects: 0.011100 ms)
+
