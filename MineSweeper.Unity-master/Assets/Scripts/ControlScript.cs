@@ -3,6 +3,8 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using TMPro;
 using UnityEngine.UI;
 using TwitchChatConnect.Client;
 using TwitchChatConnect.Data;
@@ -16,6 +18,8 @@ public class ControlScript : MonoBehaviour {
 
     [SerializeField] private static string CHECK_COMMAND = "!check";
     [SerializeField] private static string FLAG_COMMAND = "!flag";
+
+    private string lastUserToMakeCommand = "";
     
     #endregion
     
@@ -65,6 +69,11 @@ public class ControlScript : MonoBehaviour {
     ///     Reference to the screen overlay canvas (doesn't do anything)
     /// </summary>
     public GameObject OverlayCanvas;
+    
+    /// <summary>
+    ///     Reference to the grid text canvas (holds the grid text objects)
+    /// </summary>
+    public GameObject GridTextCanvas;
 
     /// <summary>
     ///     Reference to the button that shows the current state of the game (playing or dead)
@@ -95,6 +104,11 @@ public class ControlScript : MonoBehaviour {
     ///     Prefab for the options form when the user clicks on the cog
     /// </summary>
     public GameObject OptionsFormPrefab;
+    
+    /// <summary>
+    ///     Prefab of a text object that holds a grid number
+    /// </summary>
+    public GameObject GridTextPrefab;
 
     // Private vars
     private PersistentInfoScript _persistentInfo;
@@ -366,14 +380,46 @@ public class ControlScript : MonoBehaviour {
         camScript.MaxRightView = Math.Max(fieldRenderSize.x / 2f, cameraWorldViewSize.xMax);
         camScript.MaxLowerView = Math.Min(-fieldRenderSize.y, cameraWorldViewSize.yMin);
 
+        string[] alphabet = new string[]{"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y", "z"};
+        float offsetY = 1f;
+        
         // Create new container
         _tiles = new GameObject[GridSizeX, GridSizeY];
         for (int i = 0; i < GridSizeX; i++) {
             for (int j = 0; j < GridSizeY; j++) {
+                if (i == 0)
+                {
+                    var obj = Instantiate(GridTextPrefab,
+                        new Vector3(((i + .5f) * tileRenderSize.x - fieldRenderSize.x / 2f) - tileRenderSize.x,
+                            -j * tileRenderSize.y - tileRenderSize.y/2 - offsetY),
+                        new Quaternion());
+
+                    if (i < alphabet.Length)
+                    {
+                        obj.GetComponent<TMP_Text>().SetText(alphabet[j]);
+                    }
+                    else
+                    {
+                        obj.GetComponent<TMP_Text>().SetText("");
+                    }
+
+                    obj.transform.SetParent(GridTextCanvas.transform, false);
+                }
+                if (j == 0)
+                {
+                    var obj = Instantiate(GridTextPrefab,
+                        new Vector3(((i + .5f) * tileRenderSize.x - fieldRenderSize.x / 2f),
+                            (-j * tileRenderSize.y) + tileRenderSize.y/2 - offsetY),
+                        new Quaternion());
+
+                    obj.GetComponent<TMP_Text>().SetText((i + 1).ToString());
+                    
+                    obj.transform.SetParent(GridTextCanvas.transform, false);
+                }
                 // Instantiate tiles
                 _tiles[i, j] = Instantiate(TilePrefab,
                                            new Vector3((i + .5f) * tileRenderSize.x - fieldRenderSize.x / 2f,
-                                                       -j * tileRenderSize.y),
+                                                       -j * tileRenderSize.y - offsetY),
                                            new Quaternion());
                 var tile = _tiles[i, j].GetComponent<TileScript>();
                 tile.Parent = this;
@@ -638,11 +684,13 @@ public class ControlScript : MonoBehaviour {
             if (chatCommand.Command == CHECK_COMMAND)
             {
                 OnTileClick(_tiles[x, y]);
+                lastUserToMakeCommand = chatCommand.User.Username;
             }
 
             if (chatCommand.Command == FLAG_COMMAND)
             {
                 OnTileRightClick(_tiles[x, y]);
+                lastUserToMakeCommand = chatCommand.User.Username;
             }
         }
     }
