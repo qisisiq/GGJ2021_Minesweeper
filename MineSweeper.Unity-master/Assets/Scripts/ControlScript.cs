@@ -627,17 +627,22 @@ public class ControlScript : MonoBehaviour {
 
     void OnChatCommandReceived(TwitchChatCommand chatCommand)
     {
-        if (chatCommand.Command == CHECK_COMMAND)
-        {
-            string parameterX = chatCommand.Parameters[0];
-            string parameterY = chatCommand.Parameters[1];
+        string parameterX = chatCommand.Parameters[0];
+        string parameterY = chatCommand.Parameters[1];
             
-            int x = Int32.Parse(parameterX) - 1;
-            int y = char.ToUpper(parameterY.ToCharArray()[0]) - 64 - 1;
+        int x = Int32.Parse(parameterX) - 1;
+        int y = char.ToUpper(parameterY.ToCharArray()[0]) - 64 - 1;
 
-            if (x < GridSizeX && x >= 0 && y < GridSizeY && y >= 0)
+        if (x < GridSizeX && x >= 0 && y < GridSizeY && y >= 0)
+        {
+            if (chatCommand.Command == CHECK_COMMAND)
             {
                 OnTileClick(_tiles[x, y]);
+            }
+
+            if (chatCommand.Command == FLAG_COMMAND)
+            {
+                OnTileRightClick(_tiles[x, y]);
             }
         }
     }
