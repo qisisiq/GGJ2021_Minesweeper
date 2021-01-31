@@ -8,19 +8,24 @@ using TMPro;
 using UnityEngine.UI;
 using TwitchChatConnect.Client;
 using TwitchChatConnect.Data;
+using TwitchChatConnect.Example.MiniGame;
 
 /// <summary>
 ///     The control script of the game, defines the logic. Should have been a singleton.
 /// </summary>
 public class ControlScript : MonoBehaviour {
     
-    #region Twitch Commands
+    #region Twitch Stuff
 
-    [SerializeField] private static string CHECK_COMMAND = "!check";
-    [SerializeField] private static string FLAG_COMMAND = "!flag";
+    [SerializeField] private static string CHECK_COMMAND = "!c";
+    [SerializeField] private static string FLAG_COMMAND = "!f";
+    [SerializeField] private static string RESET_COMMAND = "!reset";
 
     private string lastUserToMakeCommand = "";
-    
+
+    public GameObject endGameGameObject;
+    public TMP_Text endGameText;
+
     #endregion
     
     #region Structs/Enums
@@ -319,6 +324,8 @@ public class ControlScript : MonoBehaviour {
         CreateTiles();
         ResetTimer();
         StateButton.sprite = StateButton.GetComponent<StateButtonScript>().DefaultSprite;
+        endGameGameObject.SetActive(false);
+
     }
     #endregion
 
@@ -510,11 +517,15 @@ public class ControlScript : MonoBehaviour {
             StateButton.sprite = StateButton.GetComponent<StateButtonScript>().LoseSprite;
             RevealAllMines();
             DisablePlayField();
+            endGameGameObject.SetActive(true);
+            endGameText.SetText('"' + lastUserToMakeCommand + '"' + "\n" + "found a mine!");
             break;
         case EGameState.Win: // Actions to do when won
             //StateButton.WinState();
             StateButton.sprite = StateButton.GetComponent<StateButtonScript>().WinSprite;
             DisablePlayField();
+            endGameGameObject.SetActive(true);
+            endGameText.SetText("guess we didn't find any mines :) ");
             break;
         }
     }
@@ -673,6 +684,15 @@ public class ControlScript : MonoBehaviour {
 
     void OnChatCommandReceived(TwitchChatCommand chatCommand)
     {
+        if (chatCommand.Command == RESET_COMMAND)
+        {
+            if (_gameState != EGameState.Playing)
+            {
+                Restart();
+                return;
+            }
+        }
+        
         string parameterX = chatCommand.Parameters[0];
         string parameterY = chatCommand.Parameters[1];
             
