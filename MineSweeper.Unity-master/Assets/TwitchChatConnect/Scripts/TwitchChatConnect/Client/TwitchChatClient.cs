@@ -13,7 +13,7 @@ namespace TwitchChatConnect.Client
     public class TwitchChatClient : MonoBehaviour
     {
         [Header("Command prefix, by default is '!' (only 1 character)")] [SerializeField]
-        private string commandPrefix = "!";
+        public string commandPrefix = "!";
 
         [Header("Optional init Twitch configuration")] [SerializeField]
         private TwitchConnectData initTwitchConnectData;

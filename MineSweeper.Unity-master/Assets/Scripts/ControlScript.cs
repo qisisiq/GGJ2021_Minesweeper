@@ -4,11 +4,21 @@ using Random = UnityEngine.Random;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
+using TwitchChatConnect.Client;
+using TwitchChatConnect.Data;
 
 /// <summary>
 ///     The control script of the game, defines the logic. Should have been a singleton.
 /// </summary>
 public class ControlScript : MonoBehaviour {
+    
+    #region Twitch Commands
+
+    [SerializeField] private static string CHECK_COMMAND = "!check";
+    [SerializeField] private static string FLAG_COMMAND = "!flag";
+    
+    #endregion
+    
     #region Structs/Enums
     /// <summary>
     ///     States of the game
@@ -169,6 +179,22 @@ public class ControlScript : MonoBehaviour {
         // Set camera bounds
         ScrollingCamera.GetComponent<CameraScript>().Reset();
         CreateTiles();
+        
+        // Set up the Twitch chat client to execute functions based on chat messages
+        TwitchChatClient.instance.Init(() =>
+            {
+                //TwitchChatClient.instance.onChatMessageReceived += OnChatMessageReceived;
+                TwitchChatClient.instance.onChatCommandReceived += OnChatCommandReceived;
+                //TwitchChatClient.instance.onChatRewardReceived += OnChatRewardReceived;
+
+                //MatchManager.instance.onMatchEnd += OnMatchEnd;
+                //MatchManager.instance.onMatchBegin += OnMatchBegin;
+            },
+            message =>
+            {
+                // Error when initializing.
+                Debug.LogError(message);
+            });
     }
 
     /// <summary>
@@ -595,5 +621,26 @@ public class ControlScript : MonoBehaviour {
         Destroy(OptionsForm);
         EnablePlayField();
     }
+    #endregion
+    
+    #region Twitch Events
+
+    void OnChatCommandReceived(TwitchChatCommand chatCommand)
+    {
+        if (chatCommand.Command == CHECK_COMMAND)
+        {
+            string parameterX = chatCommand.Parameters[0];
+            string parameterY = chatCommand.Parameters[1];
+            
+            int x = Int32.Parse(parameterX) - 1;
+            int y = char.ToUpper(parameterY.ToCharArray()[0]) - 64 - 1;
+
+            if (x < GridSizeX && x >= 0 && y < GridSizeY && y >= 0)
+            {
+                OnTileClick(_tiles[x, y]);
+            }
+        }
+    }
+    
     #endregion
 }
