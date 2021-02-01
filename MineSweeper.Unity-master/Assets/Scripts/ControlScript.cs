@@ -18,8 +18,11 @@ public class ControlScript : MonoBehaviour {
     #region Twitch Stuff
 
     [SerializeField] private static string CHECK_COMMAND = "!c";
+    [SerializeField] private static string CHECK_COMMAND2 = "!check";
     [SerializeField] private static string FLAG_COMMAND = "!f";
-    [SerializeField] private static string RESET_COMMAND = "!reset";
+    [SerializeField] private static string FLAG_COMMAND2 = "!flag";
+    [SerializeField] private static string RESET_COMMAND = "!r";
+    [SerializeField] private static string RESET_COMMAND2 = "!reset";
 
     private string lastUserToMakeCommand = "";
 
@@ -684,7 +687,7 @@ public class ControlScript : MonoBehaviour {
 
     void OnChatCommandReceived(TwitchChatCommand chatCommand)
     {
-        if (chatCommand.Command == RESET_COMMAND)
+        if (chatCommand.Command == RESET_COMMAND || chatCommand.Command == RESET_COMMAND2)
         {
             if (_gameState != EGameState.Playing)
             {
@@ -701,13 +704,13 @@ public class ControlScript : MonoBehaviour {
 
         if (x < GridSizeX && x >= 0 && y < GridSizeY && y >= 0)
         {
-            if (chatCommand.Command == CHECK_COMMAND)
+            if (chatCommand.Command == CHECK_COMMAND || chatCommand.Command == CHECK_COMMAND2)
             {
                 OnTileClick(_tiles[x, y]);
                 lastUserToMakeCommand = chatCommand.User.Username;
             }
 
-            if (chatCommand.Command == FLAG_COMMAND)
+            if (chatCommand.Command == FLAG_COMMAND || chatCommand.Command == FLAG_COMMAND2)
             {
                 OnTileRightClick(_tiles[x, y]);
                 lastUserToMakeCommand = chatCommand.User.Username;
