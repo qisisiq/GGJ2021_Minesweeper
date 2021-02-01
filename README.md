@@ -1,6 +1,6 @@
 # GGJ2021_Minesweeper
 
-Twitch command based minesweeper. 
+Twitch chat based minesweeper. Play minesweeper in your stream by letting viewers decide where to flip or flag tiles.
 
 ![picture of minesweeper game](https://github.com/qisisiq/GGJ2021_Minesweeper/blob/main/twitchminesweeper.png)
 
